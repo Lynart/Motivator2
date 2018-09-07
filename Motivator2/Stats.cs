@@ -11,9 +11,8 @@ namespace Motivator2
     public class Stats
     {
         static string FILE_LOCATION = @"C:\Users\vlee\Desktop\Stats.json";
-        static int TARGET = 21;
         //These must be public or json.net won't serialize them
-        //There is an override flag though
+        //There is an override flag though via [JsonProperty]
         public int DaysPassed { get; set; }
         public DateTime LastAccessed { get; set; }
 
@@ -40,10 +39,10 @@ namespace Motivator2
             }
         }
 
-        public double GetProgress()
+        public int GetProgress()
         {
             int daysSinceLastAccessed = (DateTime.Now.Date - LastAccessed).Days;
-            return (double)(daysSinceLastAccessed + DaysPassed) / (double)TARGET;
+            return daysSinceLastAccessed + DaysPassed;
         }
 
         public void Save()
