@@ -10,6 +10,12 @@ namespace Motivator2
     {
         static void Main(string[] args)
         {
+            Stats stats = new Stats();
+            stats.Load();
+            Console.WriteLine(stats.GetProgress());
+            stats.Save();
+
+            Console.ReadLine();
         }
     }
 }
